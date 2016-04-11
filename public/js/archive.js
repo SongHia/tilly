@@ -5,9 +5,6 @@ var trendingGif = "/v1/gifs/trending?";
 var searchGif = "/v1/gifs/search?";
 var query = "&q=";
 var apiKey = "&api_key=dc6zaTOxFJmzC";
-
-//new
-var tagArray;
 var selectTag;
 
 function init() {
@@ -34,6 +31,8 @@ function renderDisplay() {
             // for(var i=0;i<record.length;i++){
             var date = new Date(i.dateAdded); // 	turn string into a date object
 
+            //checks for name and displays if available
+            if(i.name!=""){
             var htmlToAdd = '<div class="col-md-12">' +
                 '<h2><span class ="displayDate">' + date.toDateString() + '</span></h2>' + //convert date object to date
                 '<h2><span class="displayTil">' + i.til + '</span></h2>' +
@@ -44,11 +43,23 @@ function renderDisplay() {
                 '<h4 class="hide">ID: <span class="displayId">' + i._id + '</span></h4>' +
                 '<input type="button" class="refresh-button" value="GIF ME MORE" onClick="window.location.reload()">' +
                 '</div>';
+            }
+            else{
+            var htmlToAdd = '<div class="col-md-12">' +
+                '<h2><span class ="displayDate">' + date.toDateString() + '</span></h2>' + //convert date object to date
+                '<h2><span class="displayTil">' + i.til + '</span></h2>' +
+                '<h4>Context: <span class="displayContext">' + i.context + '</span></h4>' +
+                '<h4>The Best Parts: <span class="displayBestPartDay">' + i.bestPartDay + '</span></h4>' +
+                '<h4>Tags: <span class="tags">' + i.tags + '</span></h4>' +
+                '<h4 class="hide">ID: <span class="displayId">' + i._id + '</span></h4>' +
+                '<input type="button" class="refresh-button" value="GIF ME MORE" onClick="window.location.reload()">' +
+                '</div>';
+            }
 
             jQuery("#record-display").append(htmlToAdd);
 
             //new
-            tagArray = i.tags;
+            var tagArray = i.tags;
             // console.log("tags: " + tagArray);
             var j = tagArray[Math.floor(Math.random() * tagArray.length)];
             // console.log("j value: " + j);

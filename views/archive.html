@@ -4,12 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>ON THIS DAY IN HISTORY</title>
     <!-- Custom Font - Change 'Muli' to the font you want -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
     <!-- Custom CSS inside CSS folder -->
     <link rel="stylesheet" href="css/style.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -23,16 +25,20 @@
 <body>
     <div class="header">
         <div class="container">
-            <ul class="nav">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/archive">Archive</a></li>
-            </ul>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav">
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/archive">Archive</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 archive-display">
+            <div class="col-md-12 archive-display">
                 <div class="main">
                     <h1>THIS HAPPENED</h1>
                 </div>
@@ -45,7 +51,11 @@
 
     <div class="footer">
         <div class="container">
-            <h5>&copy; <a href="http://songhia.com">Zero Co. 2015</a> <img src="img/PoweredBy_200_Horizontal_Light-Backgrounds_With_Logo.gif"></h5>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>&copy; <a href="http://songhia.com">Zero Co. 2015</a> <img src="img/PoweredBy_200_Horizontal_Light-Backgrounds_With_Logo.gif"></h5>
+                </div>
+            </div>
         </div>
     </div>
 

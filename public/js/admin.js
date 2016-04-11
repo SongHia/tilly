@@ -21,7 +21,7 @@ function renderAll() {
             var record = response.record;
             for (var i = 0; i < record.length; i++) {
                 var date = new Date(record[i].dateAdded); // turn string into a date object
-                var htmlToAdd = '<div class="col-md-4 archive-display">' +
+                var htmlToAdd = '<div class="col-md-12 archive-display">' +
                     '<h1><span class ="dateConverted">' + date.toDateString() + '</span></h1>' + //translated date
                     '<h1><span class ="dateAdded">' + record[i].dateAdded + '</span></h1>' + //orginal date record
                     '<h1>Today I learned: <span class="til">' + record[i].til + '</span></h1>' +

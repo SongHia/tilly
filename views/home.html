@@ -4,12 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>TODAY I LEARNED</title>
     <!-- Custom Font - Change 'Muli' to the font you want -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
     <!-- Custom CSS inside CSS folder -->
     <link rel="stylesheet" href="css/style.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -23,23 +25,26 @@
 <body>
     <div class="header">
         <div class="container">
-            <ul class="nav">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/archive">Archive</a></li>
-            </ul>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav">
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/archive">Archive</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8 archive-display">
+            <div class="col-md-12 archive-display">
                 <div class="main">
                     <h1>GIF.ME</h1>
                 </div>
                 <div class="main">
                     <h5>How was your day?</h5>
                 </div>
-
                 <form method="post" action="/api/create">
                     <div class="form-group">
                         <label for="til">Today</label>
@@ -55,14 +60,13 @@
                     </div>
                     <div class="form-group">
                         <label for="tags">Tags</label>
-                        <input type="text" class="form-control" id="tags" placeholder="seperate with commas" name="tags">
+                        <input type="text" class="form-control" id="tags" placeholder="seperate with commas" name="tags" required>
                     </div>
                     <!-- test date added NEW-->
-<!--                     <div class="form-group">
+                    <!--                     <div class="form-group">
                         <label for="dateAdded">Date</label>
                         <input type="text" class="form-control" id="dateAdded" placeholder="date" name="dateAdded" required>
                     </div> -->
-
                     <div class="form-group">
                         <label for="name">Name (Optional)</label>
                         <input type="text" class="form-control" id="name" placeholder="" name="name">
@@ -73,13 +77,18 @@
         </div>
     </div>
     <div class="push"></div>
-
     </div>
+
     <div class="footer">
         <div class="container">
-            <h5>&copy; <a href="http://songhia.com">Zero Co. 2015</a> <img src="img/PoweredBy_200_Horizontal_Light-Backgrounds_With_Logo.gif"></h5>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>&copy; <a href="http://songhia.com">Zero Co. 2015</a> <img src="img/PoweredBy_200_Horizontal_Light-Backgrounds_With_Logo.gif"></h5>
+                </div>
+            </div>
         </div>
     </div>
+
 </body>
 <!-- JQuery script-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -92,7 +101,6 @@ $("form").validate({});
 </script>
 <!-- CUSTOM JS -->
 <script src="js/home.js"></script>
-
 <!--JQuery UI JS NEW FOR CALENDAR PICKER-->
 <!--  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
  <script>
@@ -101,17 +109,22 @@ $("form").validate({});
   });
 </script>
  -->
-
 <!-- GOOGLE TRACKING -->
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-76252143-1', 'auto');
-  ga('send', 'pageview');
-
+ga('create', 'UA-76252143-1', 'auto');
+ga('send', 'pageview');
 </script>
 
 </html>

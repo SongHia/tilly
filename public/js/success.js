@@ -21,7 +21,6 @@ function searchGiphy() {
     //clean record holder
     jQuery('#display').empty();
     var htmlToAdd = '<div class="col-md-12">' +
-
         '<div class="push"></div>' +
         // '<input type="button" class="refresh-button" value="TIME TRAVEL" onClick="window.location.reload()">' +
         '<div class="success-btn"><a href="/home">add another</a></div>'+

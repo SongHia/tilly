@@ -133,7 +133,7 @@ a:hover {
     color: #0F7ADA;
 }*/
 
-/* from http://css3buttongenerator.com/ */
+
 
 .archive-display {
   padding: 10px;
@@ -144,6 +144,8 @@ a:hover {
   text-transform: uppercase;
 }
 
+/* from http://css3buttongenerator.com/ */
+
 .success-btn {
   background: #4ECDC4;
   background-image: -webkit-linear-gradient(top, #4ECDC4, #4ECDC4);
@@ -153,12 +155,13 @@ a:hover {
   background-image: linear-gradient(to bottom, #4ECDC4, #4ECDC4);
   -webkit-border-radius: 28;
   -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: Arial;
+  border-radius: 2px;
+  font-family: Helvetica, sans-serif;
   color: #ffffff;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  display: inline;
 }
 
 .success-btn:hover {
