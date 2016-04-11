@@ -17,13 +17,17 @@ body {
     background-size: cover;
 }
 
-body h1, h2, h3, h4 {
+body h1, h2, h3, h4{
     text-shadow: 2px 2px #000;
 }
 
 label {
     color: #fff;
     text-shadow: 2px 2px #000;
+}
+
+.main h5 {
+    color: #000;
 }
 
 a {
@@ -56,10 +60,11 @@ a:hover {
 }
 
 .main {
-    background-color: #fff;
+    /*background-color: #fff;*/
     margin: 0 auto;
     margin-bottom: 10px;
     padding: 5px;
+    background-color: #0FB8E4;
 }
 
 .giphy img {

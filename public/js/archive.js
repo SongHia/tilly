@@ -34,7 +34,7 @@ function renderDisplay() {
             // for(var i=0;i<record.length;i++){
             var date = new Date(i.dateAdded); // 	turn string into a date object
 
-            var htmlToAdd = '<div class="col-md-12 archive-display">' +
+            var htmlToAdd = '<div class="col-md-12">' +
                 '<h2><span class ="displayDate">' + date.toDateString() + '</span></h2>' + //convert date object to date
                 '<h2><span class="displayTil">' + i.til + '</span></h2>' +
                 '<h4>Context: <span class="displayContext">' + i.context + '</span></h4>' +
@@ -52,7 +52,13 @@ function renderDisplay() {
             // console.log("tags: " + tagArray);
             var j = tagArray[Math.floor(Math.random() * tagArray.length)];
             // console.log("j value: " + j);
-            selectTag = j;
+            if(j!=""){
+                selectTag = j;
+            }
+            else{
+                selectTag = "time"; //default
+            }
+
             console.log("select tag: " + selectTag);
             searchGiphy();
         }

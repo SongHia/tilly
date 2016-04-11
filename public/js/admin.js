@@ -131,7 +131,7 @@ jQuery("#editForm").submit(function(e) {
         success: function(response) {
             if (response.status == "OK") {
                 // console.log(response); // test for success
-                renderRecord(); // re-render the records
+                renderAll(); // re-render the records
                 $('#editModal').modal('hide') // now, close the modal
                 jQuery("#editForm input").val(''); // now, clear the input fields
             } else {
