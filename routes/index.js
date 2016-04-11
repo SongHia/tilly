@@ -9,17 +9,10 @@
 // http://localhost:3000/api/create
 // http://localhost:3000/api/update/:id
 
-//https://github.com/sslover/designing-for-data-personalization/blob/master/week8/mongoose-cheatsheet.md
-// https://songhitp-today-i-learned.herokuapp.com/add-til
-// https://songhitp-today-i-learned.herokuapp.com/directory
-// https://songhitp-today-i-learned.herokuapp.com/twilio-callback
-
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Record = require("../models/record.js"); // our db model
-var twilio = require('twilio');
-
 
 /**
  * GET '/'
@@ -257,61 +250,6 @@ router.post('/api/update/:id', function(req, res){
       return res.json(jsonData);
 
     })
-
-})
-
-
-// this route gets called whenever Twilio receives a message
-router.post('/twilio-callback', function(req,res){
-
-  // there's lots contained in the body
-  console.log(req.body);
-  // the actual message is contained in req.body.Body
-  var incomingMsg = req.body.Body;
-
-  //incoming messages look like:
-  //'format': 'Rain is wet, This morning it was gross outside, Having ice cream, tag1. tag2. tag3'
-
-
-  var msgArray = incomingMsg.split(',');
-  //msg Array --> [Rain is wet, This morning it was gross outside, Having ice cream, tag1.tag2.tag3]
-  var til = msgArray[0];
-  var context = msgArray[1];
-  var bestPartDay = msgArray[2];
-  var tags = msgArray[3].split('.');
-
-
-  //now let's save to our database
-  var recordObj = {
-    til: til,
-    context: context,
-    // tags: req.body.tags.split(','),
-    bestPartDay: bestPartDay,
-    tags: tags
-    // pageURL: req.body.pageURL,
-  }
-
-  var record = new Record(recordObj)
-
-  record.save(function(err,data){
-    // set up the twilio response
-    var twilioResp = new twilio.TwimlResponse();
-    if(err){
-      // respond to user
-      twilioResp.sms('Oops! We couldn\'t save your lesson! --> ' + incomingMsg);
-      // respond to twilio
-      res.set('Content-Type', 'text/xml');
-      res.send(twilioResp.toString());      
-    }
-    else {
-      // respond to user
-      twilioResp.sms('Successfully saved your lesson! --> ' + incomingMsg);
-      // respond to twilio
-      res.set('Content-Type', 'text/xml');
-      res.send(twilioResp.toString());     
-    }
-  })
-
 
 })
 

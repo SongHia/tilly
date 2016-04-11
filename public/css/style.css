@@ -17,52 +17,6 @@ body {
     background-size: cover;
 }
 
-
-/*.randbg {*/
-
-
-/*  background: url('../img/10.gif') no-repeat center center fixed;
-  background: url('https://media2.giphy.com/media/wy63WPXSamvFC/giphy.gif') no-repeat center center fixed;*/
-
-
-/*  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  }*/
-
-
-/*  .randbg.bg1 {
-  background-image: url('../img/1.gif');
-  }
-  .randbg.bg2 {
-  background-image: url('../img/2.gif');
-  }
-  .randbg.bg3 {
-  background-image: url('../img/3.gif');
-  }
-  .randbg.bg4 {
-  background-image: url('../img/4.gif');
-  }
-  .randbg.bg5 {
-  background-image: url('../img/5.gif');
-  }
-  .randbg.bg6 {
-  background-image: url('../img/6.gif');
-  }
-  .randbg.bg7 {
-  background-image: url('../img/7.gif');
-  }
-  .randbg.bg8 {
-  background-image: url('../img/8.gif');
-  }
-  .randbg.bg9 {
-  background-image: url('../img/9.gif');
-  }
-  .randbg.bg10 {
-  background-image: url('../img/10.gif');
-  }*/
-
 body h1 {
     text-shadow: 2px 2px #000;
 }
@@ -82,7 +36,6 @@ label {
 a {
     text-transform: uppercase;
     text-decoration: none;
-    /*    letter-spacing: 2px;*/
     font-size: 15px;
     padding: 12px;
     color: #fff;
@@ -105,7 +58,6 @@ a:hover {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     display: inline-block;
-    /*  margin:0 10px 0 10px;*/
     text-transform: uppercase;
 }
 
@@ -137,23 +89,6 @@ a:hover {
     text-align: left;
 }
 
-
-/*.twilio {
-  background-color: #0FB8E4;
-  color: #fff;
-  position: fixed;
-  bottom: 0;
-  padding-bottom: 70px;
-  width: 100%;
-  text-align: center;
-}*/
-
-
-/*.twilio h5 {
-  text-transform: uppercase;
-}
-*/
-
 .modal-header h4 {
     font-family: 'Cooper Hewitt', sans-serif;
     color: #0F7ADA;
@@ -179,10 +114,7 @@ a:hover {
     text-align: left;
 }
 
-/*.footer a {
-    color: #4ECDC4;
-}
-*/
+
 .edit-button {
     background-color: #fff;
     color: #0F7ADA;
