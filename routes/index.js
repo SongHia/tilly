@@ -58,6 +58,13 @@ router.get('/archive', function(req,res){
 
 })
 
+// simple route to show an HTML page for success
+router.get('/success', function(req,res){
+
+  res.render('success.html')
+
+})
+
 // /**
 //  * POST '/api/create'
 //  * Receives a POST request of the new user and location, saves to db, responds back
@@ -72,6 +79,7 @@ router.post('/api/create', function(req, res){
     til: req.body.til,
     context: req.body.context,
     bestPartDay: req.body.bestPartDay,
+    name: req.body.name,
     tags: req.body.tags.split(',')
     // pageURL: req.body.pageURL,
   }
@@ -95,7 +103,7 @@ router.post('/api/create', function(req, res){
 
     // return res.json(jsonData);
   
-    return res.redirect('/archive');
+    return res.redirect('/success');
   })
 })
 
@@ -195,7 +203,7 @@ router.post('/api/update/:id', function(req, res){
    var dataToUpdate = {}; // a blank object of data to update
 
     // pull out the information from the req.body and add it to the object to update
-    var til, context, bestPartDay, tags; 
+    var til, context, bestPartDay, tags, name; 
 
     // we only want to update any field if it actually is contained within the req.body
     // otherwise, leave it alone.
@@ -219,6 +227,11 @@ router.post('/api/update/:id', function(req, res){
       tags = req.body.tags.split(","); // split string into array
       // add to object that holds updated data
       dataToUpdate['tags'] = tags;
+    }
+    if(req.body.name) {
+    name = req.body.name;
+    // add to object that holds updated data
+    dataToUpdate['name'] = name;
     }
 
     // if(req.body.pageURL) {

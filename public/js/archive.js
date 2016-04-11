@@ -38,8 +38,9 @@ function renderDisplay() {
                 '<h1><span class ="displayDate">' + date.toDateString() + '</span></h1>' +
                 '<h2><span class="displayTil">' + i.til + '</span></h2>' +
                 '<h2>Context: <span class="displayContext">' + i.context + '</span></h2>' +
-                '<h2>The Best Part: <span class="displayBestPartDay">' + i.bestPartDay + '</span></h2>' +
+                '<h2>The Best Parts: <span class="displayBestPartDay">' + i.bestPartDay + '</span></h2>' +
                 '<h3>Tags: <span class="tags">' + i.tags + '</span></h3>' +
+                '<h3>Name: <span class="name">' + i.name + '</span></h3>' +
                 '<h2 class="hide">ID: <span class="displayId">' + i._id + '</span></h2>' +
                 '<input type="button" class="refresh-button" value="TIME TRAVEL" onClick="window.location.reload()">' +
                 '</div>';

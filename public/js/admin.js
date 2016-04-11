@@ -18,6 +18,7 @@ jQuery("#editForm").submit(function(e) {
     var context = jQuery("#edit-context").val();
     var bestPartDay = jQuery("#edit-bestPartDay").val();
     var tags = jQuery("#edit-tags").val();
+    var name = jQuery("#edit-name").val(); //new
     var id = jQuery("#edit-id").val();
     var dateAdded = jQuery("#edit-dateAdded").val(); //new
 
@@ -33,6 +34,7 @@ jQuery("#editForm").submit(function(e) {
             context: context,
             bestPartDay: bestPartDay,
             tags: tags,
+            name: name,
             dateAdded: dateAdded //new
         },
         success: function(response) {
@@ -74,8 +76,9 @@ function renderRecord() {
                     '<h1>Today I learned: <span class="til">' + record[i].til + '</span></h1>' +
                     '<ul>' +
                     '<li>Context: <span class="context">' + record[i].context + '</span></li>' +
-                    '<li>Best Part Of The Day: <span class="bestPartDay">' + record[i].bestPartDay + '</span></li>' +
+                    '<li>Best Parts Of The Day: <span class="bestPartDay">' + record[i].bestPartDay + '</span></li>' +
                     '<li>Tags: <span class="tags">' + record[i].tags + '</span></li>' +
+                    '<li>Name: <span class="name">' + record[i].name + '</span></li>' +
                     '<li class="hide">ID: <span class="id">' + record[i]._id + '</span></li>' +
                     '</ul>' +
                     '<button type="button" class="edit-button" id="' + record[i]._id + '" onclick="deleteRecord(event)">Delete Record</button>' +
@@ -114,6 +117,7 @@ jQuery('#editModal').on('show.bs.modal', function(e) {
     var context = $(parent).find('.context').text();
     var bestPartDay = $(parent).find('.bestPartDay').text();
     var tags = $(parent).find('.tags').text();
+    var name = $(parent).find('.name').text();
     var id = $(parent).find('.id').text();
     var dateAdded = $(parent).find('.dateAdded').text(); //new
 
@@ -123,6 +127,7 @@ jQuery('#editModal').on('show.bs.modal', function(e) {
     jQuery("#edit-context").val(context);
     jQuery("#edit-bestPartDay").val(bestPartDay);
     jQuery("#edit-tags").val(tags);
+    jQuery("#edit-name").val(name);
     jQuery("#edit-id").val(id);
     jQuery("edit-dateAdded").val(dateAdded); //new
 })
