@@ -24,16 +24,16 @@ router.get('/', function(req, res) {
 
   console.log('home page requested!');
 
-  var jsonData = {
-  	'name': 'today-i-learned',
-  	'api-status':'OK',
-    'instructions': 'text 917-746-4128 with your lesson of the day',
-    'format': 'Rain is wet, This morning it was gross outside, Having ice cream, tag1. tag2. tag3'
-  }
-  // respond with json data
-  res.json(jsonData)
+  // var jsonData = {
+  // 	'name': 'today-i-learned',
+  // 	'api-status':'OK',
+  //   'instructions': 'text 917-746-4128 with your lesson of the day',
+  //   'format': 'Rain is wet, This morning it was gross outside, Having ice cream, tag1. tag2. tag3'
+  // }
+  // // respond with json data
+  // res.json(jsonData)
 
-  // res.render('directory.html')
+  res.render('home.html')
 
 });
 
