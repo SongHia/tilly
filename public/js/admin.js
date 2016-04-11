@@ -5,8 +5,99 @@ var trendingGif = "/v1/gifs/trending?";
 var apiKey = "&api_key=dc6zaTOxFJmzC";
 
 function init() {
-    renderRecord();
+    renderAll();
     renderGiphy();
+}
+
+// get Record JSON from /api/get
+function renderAll() {
+    // first, make sure the #record-holder is empty
+    jQuery('#all-records').empty();
+
+    jQuery.ajax({
+        url: '/api/get',
+        dataType: 'json',
+        success: function(response) {
+            var record = response.record;
+            for (var i = 0; i < record.length; i++) {
+                var date = new Date(record[i].dateAdded); // turn string into a date object
+                var htmlToAdd = '<div class="col-md-4 archive-display">' +
+                    '<h1><span class ="dateConverted">' + date.toDateString() + '</span></h1>' + //translated date
+                    '<h1><span class ="dateAdded">' + record[i].dateAdded + '</span></h1>' + //orginal date record
+                    '<h1>Today I learned: <span class="til">' + record[i].til + '</span></h1>' +
+                    '<ul>' +
+                    '<li>Context: <span class="context">' + record[i].context + '</span></li>' +
+                    '<li>Best Parts Of The Day: <span class="bestPartDay">' + record[i].bestPartDay + '</span></li>' +
+                    '<li>Tags: <span class="tags">' + record[i].tags + '</span></li>' +
+                    '<li>Name: <span class="name">' + record[i].name + '</span></li>' +
+                    '<li class="hide">ID: <span class="id">' + record[i]._id + '</span></li>' +
+                    '</ul>' +
+                    '<button type="button" class="edit-button" id="' + record[i]._id + '" onclick="deleteRecord(event)">Delete Record</button>' +
+                    '<button type="button" class="edit-button" data-toggle="modal" data-target="#editModal"">Edit Record</button>' +
+                    '</div>';
+                jQuery("#all-records").append(htmlToAdd);
+            }
+        }
+    })
+}
+
+// new GET GIPHY JSON FROM API
+function renderGiphy() {
+    jQuery.ajax({
+        url: api + trendingGif + apiKey, //trending gif
+        dataType: 'json',
+        success: function(response) {
+            var data = response.data; //stores the data object
+            var i = data[Math.floor(Math.random() * data.length)]; //randomly picks data object from current trending gifs
+            $('body').css('background-image', 'url(' + i.images.original.url + ')'); //writes the url to css as bg image
+        }
+    })
+
+}
+
+jQuery('#editModal').on('show.bs.modal', function(e) {
+    // let's get access to what we just clicked on
+    var clickedButton = e.relatedTarget;
+    // now let's get its parent
+    var parent = jQuery(clickedButton).parent();
+
+    // now, let's get the values of the records that we're wanting to edit
+    // we do this by targeting specific spans within the parent and pulling out the text
+    
+    var til = $(parent).find('.til').text();
+    var context = $(parent).find('.context').text();
+    var bestPartDay = $(parent).find('.bestPartDay').text();
+    var tags = $(parent).find('.tags').text();
+    var name = $(parent).find('.name').text();
+    var id = $(parent).find('.id').text();
+    var dateAdded = $(parent).find('.dateAdded').text(); //new
+    // console.log ("modal dateAdded: " + dateAdded); //this displays but does not appear ISO 8601
+
+    // now let's set the value of the edit fields to those values
+    // jQuery("#edit-date").val(date);
+    jQuery("#edit-til").val(til);
+    jQuery("#edit-context").val(context);
+    jQuery("#edit-bestPartDay").val(bestPartDay);
+    jQuery("#edit-tags").val(tags);
+    jQuery("#edit-name").val(name);
+    jQuery("#edit-id").val(id);
+    jQuery("edit-dateAdded").val(dateAdded); //set the field in the modal
+
+})
+
+function deleteRecord(event) {
+    var targetedId = event.target.id;
+    console.log('the record to delete is ' + targetedId);
+    // now, let's call the delete route with AJAX
+    jQuery.ajax({
+        url: '/api/delete/' + targetedId,
+        dataType: 'json',
+        success: function(response) {
+            // now, let's re-render the records
+            renderAll();
+        }
+    })
+    event.preventDefault();
 }
 
 // edit form button event
@@ -57,94 +148,5 @@ jQuery("#editForm").submit(function(e) {
     e.preventDefault();
     return false;
 });
-
-// get Record JSON from /api/get
-function renderRecord() {
-    // first, make sure the #record-holder is empty
-    jQuery('#record-holder').empty();
-
-    jQuery.ajax({
-        url: '/api/get',
-        dataType: 'json',
-        success: function(response) {
-            var record = response.record;
-            for (var i = 0; i < record.length; i++) {
-                var date = new Date(record[i].dateAdded); // turn string into a date object
-                var htmlToAdd = '<div class="col-md-4">' +
-                    '<h1><span class ="date">' + date.toDateString() + '</span></h1>' +
-                    // '<h1><span class ="date">' + record[i].dateAdded + '</span></h1>' +
-                    '<h1>Today I learned: <span class="til">' + record[i].til + '</span></h1>' +
-                    '<ul>' +
-                    '<li>Context: <span class="context">' + record[i].context + '</span></li>' +
-                    '<li>Best Parts Of The Day: <span class="bestPartDay">' + record[i].bestPartDay + '</span></li>' +
-                    '<li>Tags: <span class="tags">' + record[i].tags + '</span></li>' +
-                    '<li>Name: <span class="name">' + record[i].name + '</span></li>' +
-                    '<li class="hide">ID: <span class="id">' + record[i]._id + '</span></li>' +
-                    '</ul>' +
-                    '<button type="button" class="edit-button" id="' + record[i]._id + '" onclick="deleteRecord(event)">Delete Record</button>' +
-                    '<button type="button" class="edit-button" data-toggle="modal" data-target="#editModal"">Edit Record</button>' +
-                    '</div>';
-                jQuery("#record-holder").append(htmlToAdd);
-            }
-        }
-    })
-}
-
-// new GET GIPHY JSON FROM API
-function renderGiphy() {
-    jQuery.ajax({
-        url: api + trendingGif + apiKey, //trending gif
-        dataType: 'json',
-        success: function(response) {
-            var data = response.data; //stores the data object
-            var i = data[Math.floor(Math.random() * data.length)]; //randomly picks data object from current trending gifs
-            $('body').css('background-image', 'url(' + i.images.original.url + ')'); //writes the url to css as bg image
-        }
-    })
-
-}
-
-jQuery('#editModal').on('show.bs.modal', function(e) {
-    // let's get access to what we just clicked on
-    var clickedButton = e.relatedTarget;
-    // now let's get its parent
-    var parent = jQuery(clickedButton).parent();
-
-    // now, let's get the values of the records that we're wanting to edit
-    // we do this by targeting specific spans within the parent and pulling out the text
-    
-    var til = $(parent).find('.til').text();
-    var context = $(parent).find('.context').text();
-    var bestPartDay = $(parent).find('.bestPartDay').text();
-    var tags = $(parent).find('.tags').text();
-    var name = $(parent).find('.name').text();
-    var id = $(parent).find('.id').text();
-    var dateAdded = $(parent).find('.dateAdded').text(); //new
-
-    // now let's set the value of the edit fields to those values
-    // jQuery("#edit-date").val(date);
-    jQuery("#edit-til").val(til);
-    jQuery("#edit-context").val(context);
-    jQuery("#edit-bestPartDay").val(bestPartDay);
-    jQuery("#edit-tags").val(tags);
-    jQuery("#edit-name").val(name);
-    jQuery("#edit-id").val(id);
-    jQuery("edit-dateAdded").val(dateAdded); //new
-})
-
-function deleteRecord(event) {
-    var targetedId = event.target.id;
-    console.log('the record to delete is ' + targetedId);
-    // now, let's call the delete route with AJAX
-    jQuery.ajax({
-        url: '/api/delete/' + targetedId,
-        dataType: 'json',
-        success: function(response) {
-            // now, let's re-render the records
-            renderRecord();
-        }
-    })
-    event.preventDefault();
-}
 
 window.addEventListener('load', init())

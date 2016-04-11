@@ -52,6 +52,12 @@
                         <label for="tags">Tags</label>
                         <input type="text" class="form-control" id="tags" placeholder=" comma separated tags" name="tags" required>
                     </div>
+                    <!-- test date added NEW-->
+<!--                     <div class="form-group">
+                        <label for="dateAdded">Date</label>
+                        <input type="text" class="form-control" id="dateAdded" placeholder="date" name="dateAdded" required>
+                    </div> -->
+
                     <div class="form-group">
                         <label for="name">Name (Optional)</label>
                         <input type="text" class="form-control" id="name" placeholder="your name" name="name">
@@ -81,6 +87,15 @@ $("form").validate({});
 </script>
 <!-- CUSTOM JS -->
 <script src="js/home.js"></script>
+
+<!--JQuery UI JS NEW FOR CALENDAR PICKER-->
+<!--  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+ <script>
+  $(function() {
+    $( "#dateAdded" ).datepicker();
+  });
+</script>
+ -->
 
 <!-- GOOGLE TRACKING -->
 <script>

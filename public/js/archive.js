@@ -34,15 +34,15 @@ function renderDisplay() {
             // for(var i=0;i<record.length;i++){
             var date = new Date(i.dateAdded); // 	turn string into a date object
 
-            var htmlToAdd = '<div class="col-md-12">' +
-                '<h1><span class ="displayDate">' + date.toDateString() + '</span></h1>' +
+            var htmlToAdd = '<div class="col-md-12 archive-display">' +
+                '<h2><span class ="displayDate">' + date.toDateString() + '</span></h2>' + //convert date object to date
                 '<h2><span class="displayTil">' + i.til + '</span></h2>' +
-                '<h2>Context: <span class="displayContext">' + i.context + '</span></h2>' +
-                '<h2>The Best Parts: <span class="displayBestPartDay">' + i.bestPartDay + '</span></h2>' +
-                '<h3>Tags: <span class="tags">' + i.tags + '</span></h3>' +
-                '<h3>Name: <span class="name">' + i.name + '</span></h3>' +
-                '<h2 class="hide">ID: <span class="displayId">' + i._id + '</span></h2>' +
-                '<input type="button" class="refresh-button" value="TIME TRAVEL" onClick="window.location.reload()">' +
+                '<h4>Context: <span class="displayContext">' + i.context + '</span></h4>' +
+                '<h4>The Best Parts: <span class="displayBestPartDay">' + i.bestPartDay + '</span></h4>' +
+                '<h4>Tags: <span class="tags">' + i.tags + '</span></h4>' +
+                '<h4>Name: <span class="name">' + i.name + '</span></h4>' +
+                '<h4 class="hide">ID: <span class="displayId">' + i._id + '</span></h4>' +
+                '<input type="button" class="refresh-button" value="GIF ME MORE" onClick="window.location.reload()">' +
                 '</div>';
 
             jQuery("#record-display").append(htmlToAdd);

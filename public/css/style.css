@@ -17,15 +17,7 @@ body {
     background-size: cover;
 }
 
-body h1 {
-    text-shadow: 2px 2px #000;
-}
-
-body h2 {
-    text-shadow: 2px 2px #000;
-}
-
-body h3 {
+body h1, h2, h3, h4 {
     text-shadow: 2px 2px #000;
 }
 
@@ -38,12 +30,15 @@ a {
     text-decoration: none;
     font-size: 15px;
     padding: 12px;
-    color: #fff;
+  /*  color: #fff;*/
+    color: #0FB8E4;
+
 }
 
 a:visited {
-    color: #fff;
+    color: #0FB8E4;
     text-decoration: none;
+
 }
 
 a:hover {
@@ -59,6 +54,7 @@ a:hover {
     font-weight: 600;
     display: inline-block;
     text-transform: uppercase;
+/*        text-shadow: 2px 2px #000;*/
 }
 
 .main {
@@ -124,12 +120,31 @@ a:hover {
     color: #0F7ADA;
 }
 
+/*makes it stand out*/
 .displayDate {
     /*   font-size:50px;*/
     color: #0F7ADA;
 }
 
+/*.displayTil {
+    color: #0F7ADA;
+}*/
+
 /* from http://css3buttongenerator.com/ */
+
+.archive-display {
+/*  border: 1px red dashed;*/
+  padding: 10px;
+  background-color:rgba(245,245,245,0.5);
+/*  border: 1px solid #ccc;*/
+/*  position: absolute;*/
+/*  left: 144px;
+  top: 229px;*/
+}
+
+.archive-display h2 {
+  text-transform: uppercase;
+}
 
 .success-btn {
   background: #4ECDC4;
