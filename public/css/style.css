@@ -30,15 +30,12 @@ a {
     text-decoration: none;
     font-size: 15px;
     padding: 12px;
-  /*  color: #fff;*/
-    color: #0FB8E4;
-
+    color: #fff;
 }
 
 a:visited {
-    color: #0FB8E4;
+    color: #fff;
     text-decoration: none;
-
 }
 
 a:hover {
@@ -133,13 +130,8 @@ a:hover {
 /* from http://css3buttongenerator.com/ */
 
 .archive-display {
-/*  border: 1px red dashed;*/
   padding: 10px;
-  background-color:rgba(245,245,245,0.5);
-/*  border: 1px solid #ccc;*/
-/*  position: absolute;*/
-/*  left: 144px;
-  top: 229px;*/
+  background-color:rgba(245,245,245,0.2);
 }
 
 .archive-display h2 {
