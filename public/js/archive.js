@@ -98,7 +98,7 @@ function findKeyword() {
 
     //API ENDPOINT http://api.jquery.com/jquery.getjson/
 
-    url = 'http://access.alchemyapi.com/calls/text/TextGetRankedKeywords';
+    url = 'https://access.alchemyapi.com/calls/text/TextGetRankedKeywords';
     // url = 'http://access.alchemyapi.com/calls/text/TextGetRankedConcepts';
 
     //SAMPLE APPROACH - gets JSON of data from Alchemy API
