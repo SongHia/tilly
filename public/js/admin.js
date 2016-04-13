@@ -36,6 +36,12 @@ function renderAll() {
                     '<button type="button" class="edit-button" data-toggle="modal" data-target="#editModal"">Edit Record</button>' +
                     '</div>';
                 jQuery("#all-records").append(htmlToAdd);
+                // var ogDate = record[i].dateAdded;
+                // var translatedDate = date.toDateString();
+                // console.log("original date: " + ogDate);
+                // console.log("var og date: " + typeof ogDate);
+                // console.log("translated date: " + date.toString());
+                // console.log("var translated date: " + typeof translatedDate);
             }
         }
     })
@@ -55,33 +61,48 @@ function renderGiphy() {
 
 }
 
+//GETS THE DATA FROM THE RENDERED HTML ENTRY
 jQuery('#editModal').on('show.bs.modal', function(e) {
     // let's get access to what we just clicked on
     var clickedButton = e.relatedTarget;
     // now let's get its parent
     var parent = jQuery(clickedButton).parent();
 
+    //GETS
     // now, let's get the values of the records that we're wanting to edit
     // we do this by targeting specific spans within the parent and pulling out the text
-    
     var til = $(parent).find('.til').text();
     var context = $(parent).find('.context').text();
     var bestPartDay = $(parent).find('.bestPartDay').text();
     var tags = $(parent).find('.tags').text();
     var name = $(parent).find('.name').text();
     var id = $(parent).find('.id').text();
-    var dateAdded = $(parent).find('.dateAdded').text(); //new
-    // console.log ("modal dateAdded: " + dateAdded); //this displays but does not appear ISO 8601
 
+    //new
+    var dateAdded = $(parent).find('.dateAdded').text(); //original
+    var dateConverted = $(parent).find('.dateConverted').text(); //ISO 8601
+
+    console.log("modal dateAdded raw: " + dateAdded);
+    // console.log("modal dateConverted: " + dateConverted);
+
+    // var now = moment();
+    // console.log("current moment: " + now)
+    // var conversion = moment(now, "MM-DD-YYYY");
+    // console.log("conversion moment: " + conversion);
+
+
+    //POPULATES IN FORM FROM ABOVE VARIABLES
     // now let's set the value of the edit fields to those values
-    // jQuery("#edit-date").val(date);
+    jQuery("#edit-date").val(dateAdded);
     jQuery("#edit-til").val(til);
     jQuery("#edit-context").val(context);
     jQuery("#edit-bestPartDay").val(bestPartDay);
     jQuery("#edit-tags").val(tags);
     jQuery("#edit-name").val(name);
     jQuery("#edit-id").val(id);
-    jQuery("edit-dateAdded").val(dateAdded); //set the field in the modal
+
+    //HERE
+    jQuery("#edit-dateAdded").val(dateAdded); //set the field in the modal
 
 })
 
@@ -100,7 +121,7 @@ function deleteRecord(event) {
     event.preventDefault();
 }
 
-// edit form button event
+//POST EVENT
 // when the form is submitted (with a new record edit), the below runs
 jQuery("#editForm").submit(function(e) {
 
@@ -111,7 +132,17 @@ jQuery("#editForm").submit(function(e) {
     var tags = jQuery("#edit-tags").val();
     var name = jQuery("#edit-name").val(); //new
     var id = jQuery("#edit-id").val();
-    var dateAdded = jQuery("#edit-dateAdded").val(); //new
+    // var dateAdded = jQuery("#edit-dateAdded").val(); //working
+    // console.log("dateAdded post: " + dateAdded);
+
+    var stringDate = jQuery("#edit-dateAdded").val();
+    var dateAdded = new Date(stringDate) // Mon Sep 19 2011 08:49:21 GMT-0700 (PDT)
+    console.log("date object: " + dateAdded)
+
+    //test
+    // var dateGrab = jQuery("#edit-dateAdded").val(); // Mon Sep 19 2011 08:49:21 GMT-0700 (PDT)
+    // var dateAdded = moment(dateGrab, 'DD/MM/YYYY', true).format()
+
 
     // POST the data from above to our API create route
     jQuery.ajax({
@@ -127,9 +158,11 @@ jQuery("#editForm").submit(function(e) {
             tags: tags,
             name: name,
             dateAdded: dateAdded //new
+            // dateAdded: { type: Date, dateAdded }
         },
         success: function(response) {
             if (response.status == "OK") {
+                console.log("SUCCESS")
                 // console.log(response); // test for success
                 renderAll(); // re-render the records
                 $('#editModal').modal('hide') // now, close the modal

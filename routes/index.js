@@ -203,7 +203,9 @@ router.post('/api/update/:id', function(req, res){
    var dataToUpdate = {}; // a blank object of data to update
 
     // pull out the information from the req.body and add it to the object to update
-    var til, context, bestPartDay, tags, name; 
+    var til, context, bestPartDay, name, dateAdded;
+    var tags = []; // blank array to hold tags
+
 
     // we only want to update any field if it actually is contained within the req.body
     // otherwise, leave it alone.
@@ -222,7 +224,7 @@ router.post('/api/update/:id', function(req, res){
     // add to object that holds updated data
     dataToUpdate['bestPartDay'] = bestPartDay;
     }
-    var tags = []; // blank array to hold tags
+    
     if(req.body.tags){
       tags = req.body.tags.split(","); // split string into array
       // add to object that holds updated data
@@ -232,6 +234,14 @@ router.post('/api/update/:id', function(req, res){
     name = req.body.name;
     // add to object that holds updated data
     dataToUpdate['name'] = name;
+    }
+
+
+    //NEW
+    if(req.body.dateAdded) {
+    dateAdded = req.body.dateAdded;
+    // add to object that holds updated data
+    dataToUpdate['dateAdded'] = dateAdded;
     }
 
     // if(req.body.pageURL) {
