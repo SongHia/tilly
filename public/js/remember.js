@@ -16,7 +16,7 @@ var resultsArray;
 
 function init() {
     getTILJSON();
-    // autoReload();
+    autoReload();
 }
 
 function getTILJSON() {
@@ -34,7 +34,7 @@ function autoReload() {
     setInterval(function() {
         console.log("auto reload");
         loadEntry();
-    }, 8000);
+    }, 10000);
 }
 
 function loadEntry() {
