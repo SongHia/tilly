@@ -41,15 +41,6 @@ function loadEntry() {
     jQuery("#record-display").empty(); //clear old entry
     var i = tilRecord[Math.floor(Math.random() * tilRecord.length)]; //get random entry
     var date = new Date(i.dateAdded); //convert entry date into a date object
-    if (i.context !== "") {
-        var htmlToAdd = '<div class="col-md-12">' +
-            '<h4><span class ="displayDate">' + date.toDateString() + '</span></h4>' + //human readable date
-            '<p><span class="displayTil">' + i.til + '</span></p>' +
-            '<p>Context: <span class="displayContext">' + i.context + '</span></p>' +
-            // '<p>The Best Parts: <span class="displayBestPartDay">' + i.bestPartDay + '</span></p>' +
-            // '<input type="button" class="refresh-button" value="GIF ME MORE" onClick="loadEntry()">' +
-            '</div>';
-    } else {
         var htmlToAdd = '<div class="col-md-12">' +
             '<h4><span class ="displayDate">' + date.toDateString() + '</span></h4>' + //human readable date
             '<p><span class="displayTil">' + i.til + '</span></p>' +
@@ -57,9 +48,8 @@ function loadEntry() {
             // '<p>The Best Parts: <span class="displayBestPartDay">' + i.bestPartDay + '</span></p>' +
             // '<input type="button" class="refresh-button" value="GIF ME MORE" onClick="loadEntry()">' +
             '</div>';
-    }
     jQuery("#record-display").append(htmlToAdd); //add new entry
-    tilText = i.til + " " + i.context + " " + i.bestPartDay; //Alchemy input text
+    tilText = i.til; //Alchemy input text
     passAlchemy(tilText);
 }
 
