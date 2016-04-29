@@ -134,7 +134,7 @@ li {
 
 .footer h5 {
     text-transform: uppercase;
-    color: #fff;
+    color: #000;
     font-family: 'Cooper Hewitt', sans-serif;
     text-align: center;
     margin: 0 auto;
@@ -230,6 +230,10 @@ body {
 
 #admin-entry {
     padding:20px 0;
+}
+
+#til {
+    padding-bottom: 50px;
 }
 
 button {

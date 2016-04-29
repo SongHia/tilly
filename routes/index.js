@@ -67,9 +67,9 @@ router.get('/summary', function(req, res) {
 router.post('/api/create', function(req, res) {
     console.log(req.body);
     var recordObj = {
-        til: req.body.til,
-        context: req.body.context,
-        bestPartDay: req.body.bestPartDay,
+        til: req.body.til
+        // context: req.body.context
+        // bestPartDay: req.body.bestPartDay
         // name: req.body.name,
         // tags: req.body.tags.split(',')
         // pageURL: req.body.pageURL,
@@ -258,9 +258,9 @@ router.post('/twilio-callback', function(req, res) {
 
     //now let's save to our database
     var recordObj = {
-        til: til,
-        context: context,
-        bestPartDay: bestPartDay
+        til: til
+        // context: context
+        // bestPartDay: bestPartDay
         // tags: req.body.tags.split(','),
         // tags: tags
         // pageURL: req.body.pageURL,
